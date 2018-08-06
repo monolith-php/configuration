@@ -1,0 +1,33 @@
+{
+  "name": "monolith/configuration",
+  "description": "Monolith: Configuration",
+  "license": "MIT",
+  "keywords": [
+    "monolith",
+    "http"
+  ],
+  "homepage": "https://www.getmonolith.com",
+  "authors": [
+    {
+      "name": "Mitchell van Wijngaarden",
+      "email": "mitchell@kooding.nl"
+    },
+    {
+      "name": "Shawn McCool",
+      "email": "shawn@heybigname.com"
+    }
+  ],
+  "require": {
+    "php": "^7.1",
+    "vlucas/phpdotenv": "^2.5@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "Monolith\\Configuration\\": "src/"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev"
+}
