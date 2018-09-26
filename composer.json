@@ -10,16 +10,12 @@
     {
       "name": "Shawn McCool",
       "email": "shawn@heybigname.com"
-    },
-    {
-      "name": "Mitchell van Wijngaarden",
-      "email": "mitchell@kooding.nl"
     }
   ],
   "require": {
     "php": "^7.1",
     "vlucas/phpdotenv": "^2.5@dev",
-    "monolith/component-loading": "^1.0"
+    "monolith/component-loading": ">=2"
   },
   "autoload": {
     "psr-4": {
