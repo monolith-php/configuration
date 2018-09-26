@@ -1,4 +1,4 @@
-<?php Monolith\Configuration;
+<?php namespace Monolith\Configuration;
 
 final class ConfigurationBootstrap implements \Monolith\ComponentBootstrapping\ComponentBootstrap {
 
