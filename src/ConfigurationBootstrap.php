@@ -1,6 +1,6 @@
 <?php Monolith\Configuration;
 
-final class ConfigurationBootstrap implements \Monolith\ComponentLoading\ComponentBootstrap {
+final class ConfigurationBootstrap implements \Monolith\ComponentBootstrapping\ComponentBootstrap {
 
     public function bind(\Monolith\DependencyInjection\Container $container): void {
 
