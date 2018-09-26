@@ -6,6 +6,7 @@ use PhpSpec\ObjectBehavior;
 class ConfigurationBootstrapSpec extends ObjectBehavior
 {
     function let() {
+        $this->beConstructedWith('.');
         $this->bind(new Container);
     }
 
