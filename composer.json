@@ -15,7 +15,7 @@
   "require": {
     "php": "^7.1",
     "vlucas/phpdotenv": "^2.5@dev",
-    "monolith/component-loading": ">=2"
+    "monolith/component-bootstrapping": ">=2"
   },
   "autoload": {
     "psr-4": {
