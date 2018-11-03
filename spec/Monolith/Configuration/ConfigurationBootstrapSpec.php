@@ -5,12 +5,19 @@ use PhpSpec\ObjectBehavior;
 
 class ConfigurationBootstrapSpec extends ObjectBehavior
 {
-    function let() {
-        $this->beConstructedWith('.');
+    function it_can_load_environment_variables()
+    {
+        $this->beConstructedWith('./spec');
         $this->bind(new Container);
+
+        expect(getenv('EXAMPLE_VARIABLE'))->shouldBe('123');
     }
 
-    function it_can_load_environment_variables() {
-        expect(getenv('EXAMPLE_VARIABLE'))->shouldBe('123');
+    function it_can_load_alternate_environment_configurations()
+    {
+        $this->beConstructedWith('./spec', 'testing');
+        $this->bind(new Container);
+
+        expect(getenv('TESTING_STRING'))->shouldBe('hi');
     }
 }
