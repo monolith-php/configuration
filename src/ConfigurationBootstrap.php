@@ -16,7 +16,6 @@ final class ConfigurationBootstrap implements \Monolith\ComponentBootstrapping\C
     public function bind(\Monolith\DependencyInjection\Container $container): void
     {
         $filename = '.env' . (is_null($this->environmentName) ? '' : '.' . $this->environmentName);
-        var_dump($filename);
         $dotenv = new \Dotenv\Dotenv($this->envFilePath, $filename);
         $dotenv->load();
     }
