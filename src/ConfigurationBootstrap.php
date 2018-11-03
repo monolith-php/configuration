@@ -4,10 +4,9 @@ final class ConfigurationBootstrap implements \Monolith\ComponentBootstrapping\C
 {
     /** @var string */
     private $envFilePath;
-    /** @var null */
     private $environmentName;
 
-    public function __construct($envFilePath = '.', $environmentName = null)
+    public function __construct($envFilePath = '.', $environmentName = false)
     {
         $this->envFilePath = $envFilePath;
         $this->environmentName = $environmentName;
@@ -15,7 +14,7 @@ final class ConfigurationBootstrap implements \Monolith\ComponentBootstrapping\C
 
     public function bind(\Monolith\DependencyInjection\Container $container): void
     {
-        $filename = '.env' . (is_null($this->environmentName) ? '' : '.' . $this->environmentName);
+        $filename = '.env' . (!$this->environmentName ? '' : '.' . $this->environmentName);
         $dotenv = new \Dotenv\Dotenv($this->envFilePath, $filename);
         $dotenv->load();
     }
