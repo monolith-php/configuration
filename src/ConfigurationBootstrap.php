@@ -1,25 +1,29 @@
 <?php namespace Monolith\Configuration;
 
-final class ConfigurationBootstrap implements \Monolith\ComponentBootstrapping\ComponentBootstrap
+use Monolith\DependencyInjection\Container;
+use Monolith\ComponentBootstrapping\ComponentBootstrap;
+
+final class ConfigurationBootstrap implements ComponentBootstrap
 {
     /** @var string */
     private $envFilePath;
-    private $environmentName;
 
-    public function __construct($envFilePath = '.', $environmentName = false)
+    public function __construct($envFilePath = '.')
     {
         $this->envFilePath = $envFilePath;
-        $this->environmentName = $environmentName;
     }
 
-    public function bind(\Monolith\DependencyInjection\Container $container): void
+    public function bind(Container $container): void
     {
-        $filename = '.env' . (!$this->environmentName ? '' : '.' . $this->environmentName);
-        $dotenv = new \Dotenv\Dotenv($this->envFilePath, $filename);
-        $dotenv->load();
+        $container->singleton(
+            Config::class, function ($container) {
+            return Config::fromDictionary(
+                Loader::fromFile($this->envFilePath)
+            );
+        });
     }
 
-    public function init(\Monolith\DependencyInjection\Container $container): void
+    public function init(Container $container): void
     {
     }
 }

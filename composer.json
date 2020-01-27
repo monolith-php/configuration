@@ -5,20 +5,18 @@
     "monolith",
     "http"
   ],
-  "homepage": "https://www.getmonolith.com",
   "authors": [
     {
       "name": "Shawn McCool",
-      "email": "shawn@heybigname.com"
+      "email": "shawnmc@gmail.com"
     }
   ],
   "require": {
     "php": "^7.2",
-    "vlucas/phpdotenv": "^2.5@dev",
     "monolith/component-bootstrapping": "^6"
   },
   "require-dev": {
-    "phpspec/phpspec": "^5.0"
+    "phpunit/phpunit": "^8.3@dev"
   },
   "autoload": {
     "psr-4": {
@@ -26,11 +24,8 @@
     }
   },
   "autoload-dev": {
-    "psr-4": {
-      "spec\\Monolith\\Configuration\\": "spec/"
-    },
     "files": [
-      "spec/functions.php"
+      "tests/functions.php"
     ]
   },
   "config": {
