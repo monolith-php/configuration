@@ -12,8 +12,8 @@
     }
   ],
   "require": {
-    "php": "^7.2",
-    "monolith/component-bootstrapping": "^6"
+    "php": "^7.4",
+    "monolith/component-bootstrapping": "^7"
   },
   "require-dev": {
     "phpunit/phpunit": "^8.3@dev"
