@@ -21,6 +21,25 @@ final class ConfigTest extends TestCase
         $this->assertSame(123, $config->get('ham'));
     }
 
+    function testCanGetAllValues()
+    {
+        $config = Config::fromDictionary(
+            Dictionary::of(
+                [
+                    'key' => 'value',
+                    'ham' => 123,
+                ])
+        );
+
+        $all = $config->all()->toArray();
+        
+        $this->assertArrayHasKey('key', $all);
+        $this->assertArrayHasKey('ham', $all);
+        
+        $this->assertSame('value', $all['key']);
+        $this->assertSame(123, $all['ham']);
+    }
+    
     function testCanQueryAvailableOfKey()
     {
         $config = Config::fromDictionary(

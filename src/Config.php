@@ -21,11 +21,16 @@ final class Config implements ArrayAccess
         return $this->values->get($key);
     }
 
-    public function has($key)
+    public function has($key): bool 
     {
         return $this->values->has($key);
     }
 
+    public function all(): Dictionary
+    {
+        return $this->values;
+    }
+    
     /**
      * @inheritDoc
      */
