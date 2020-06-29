@@ -17,8 +17,15 @@ final class ConfigurationBootstrap implements ComponentBootstrap
     {
         $container->singleton(
             Config::class, function ($container) {
+            
+            $envFilePath = $this->envFilePath;
+            
+            if (isset($_ENV['ENVIRONMENT'])) {
+                $envFilePath .= '.' . strtolower($_ENV['ENVIRONMENT']);
+            }
+            
             return Config::fromDictionary(
-                Loader::fromFile($this->envFilePath)
+                Loader::fromFile($envFilePath)
             );
         });
     }

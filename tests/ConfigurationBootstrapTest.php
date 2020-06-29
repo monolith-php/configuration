@@ -20,4 +20,22 @@ final class ConfigurationBootstrapTest extends TestCase
         $this->assertTrue($config->has('WEB_SESSIONS_REDIS_PORT'));
         $this->assertFalse($config->has('CLEARLY_NOT_REAL'));
     }
+
+    public function test_changes_env_file_based_on_environment_variable()
+    {
+        $originalEnvironment = $_ENV;
+        
+        $_ENV['ENVIRONMENT'] = 'example';
+        
+        $components = new ComponentLoader(new Container);
+        $components->register(new ConfigurationBootstrap('tests/.env'));
+        $container = $components->load();
+
+        /** @var Config $config */
+        $config = $container->get(Config::class);
+
+        $this->assertTrue($config->has('TESTING_MODE'));
+        
+        $_ENV = $originalEnvironment;
+    }
 }
