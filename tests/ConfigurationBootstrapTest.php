@@ -23,9 +23,9 @@ final class ConfigurationBootstrapTest extends TestCase
 
     public function test_changes_env_file_based_on_environment_variable()
     {
-        $originalEnvironment = $_ENV;
+        $originalEnvironment = getenv('ENVIRONMENT');
         
-        $_ENV['ENVIRONMENT'] = 'example';
+        putenv('ENVIRONMENT=example');
         
         $components = new ComponentLoader(new Container);
         $components->register(new ConfigurationBootstrap('tests/.env'));
@@ -36,6 +36,6 @@ final class ConfigurationBootstrapTest extends TestCase
 
         $this->assertTrue($config->has('TESTING_MODE'));
         
-        $_ENV = $originalEnvironment;
+        putenv('ENVIRONMENT=' . $originalEnvironment);
     }
 }

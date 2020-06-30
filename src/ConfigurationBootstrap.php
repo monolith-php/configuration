@@ -20,8 +20,8 @@ final class ConfigurationBootstrap implements ComponentBootstrap
             
             $envFilePath = $this->envFilePath;
             
-            if (isset($_ENV['ENVIRONMENT'])) {
-                $envFilePath .= '.' . strtolower($_ENV['ENVIRONMENT']);
+            if (getenv('ENVIRONMENT')) {
+                $envFilePath .= '.' . strtolower(getenv('ENVIRONMENT'));
             }
             
             return Config::fromDictionary(
