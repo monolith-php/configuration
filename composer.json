@@ -6,12 +6,22 @@
     "http"
   ],
   "require": {
-    "php": ">=7.4",
+    "php": ">=8",
     "monolith/component-bootstrapping": "^7"
   },
   "require-dev": {
     "phpunit/phpunit": "^8.3@dev"
   },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.humanmusic.eu",
+      "canonical": false,
+      "only": [
+        "monolith/*"
+      ]
+    }
+  ],
   "autoload": {
     "psr-4": {
       "Monolith\\Configuration\\": "src/"

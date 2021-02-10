@@ -4,3 +4,4 @@ composer.lock
 /bin
 /vendor
 .phpunit.result.cache
+auth.json
