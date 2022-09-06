@@ -5,8 +5,7 @@ use Monolith\Collections\Dictionary;
 
 final class Config implements ArrayAccess
 {
-    /** @var Dictionary */
-    private $values;
+    private Dictionary $values;
 
     private function __construct(Dictionary $values)
     {
@@ -34,7 +33,7 @@ final class Config implements ArrayAccess
     /**
      * @inheritDoc
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return $this->values->has($offset);
     }
@@ -42,7 +41,7 @@ final class Config implements ArrayAccess
     /**
      * @inheritDoc
      */
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset): mixed
     {
         return $this->values->get($offset);
     }
@@ -50,7 +49,7 @@ final class Config implements ArrayAccess
     /**
      * @inheritDoc
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         throw new CanNotModifyConfigObjectWithArrayAccess();
     }
@@ -58,13 +57,13 @@ final class Config implements ArrayAccess
     /**
      * @inheritDoc
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(mixed $offset): void
     {
         throw new CanNotModifyConfigObjectWithArrayAccess();
     }
 
     public static function fromDictionary(Dictionary $dictionary): Config
     {
-        return new static($dictionary);
+        return new Config($dictionary);
     }
 }
