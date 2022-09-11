@@ -6,8 +6,9 @@
     "http"
   ],
   "require": {
-    "php": ">=8",
-    "monolith/component-bootstrapping": "^8"
+    "php": ">=8.1",
+    "monolith/component-bootstrapping": "^9",
+    "monolith/collections": "^10"
   },
   "require-dev": {
     "phpunit/phpunit": "^8.3@dev"
